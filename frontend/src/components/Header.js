@@ -17,7 +17,7 @@ Header.protoTypes = {
 };
 
 //CSS in JS
-const headingStyle = {color: 'red', backgroundColor:'blue'};
+//const headingStyle = {color: 'red', backgroundColor:'blue'};
 
 export default Header;
 
