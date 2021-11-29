@@ -24,7 +24,7 @@ Additional notes:
 ## Installation and running
 (requires Node to be installed)
 
-Within the `fronted` folder:
+Within the `frontend` folder:
 ### `npm install` 
 
 Within the `backend` folder:
