@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PageSelector from './components/PageSelector';
 import AxesSelector from './components/AxesSelector';
+import DetailedInfo from './components/DetailedInfo';
 import About from './components/About';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -15,6 +16,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+
 
 ChartJS.register(
   CategoryScale,
@@ -40,22 +42,14 @@ export const options = {
 
 
 var data;
+var tableData;
 
 const App = () => {
-  const [tableData, setTableData] = useState([]);
-  const [showAxesSelector, setShowAxesSelector] = useState(true);
+  //const [tableData, setTableData] = useState([]);
+  const [showAxesSelector, setShowAxesSelector] = useState(false);
   const [showChart, setShowChart] = useState(false);
+  const [showDetailedInfo, setShowDetailedInfo] = useState(false);
 
-
-  /*  const onClick = (e) => {
-    const activePoints = myChart.getElementsAtEventForMode(e, 'nearest', {
-      intersect: true
-    }, false)
-    const [{
-      index
-    }] = activePoints;
-    console.log(sampleData[[index]);
-  };  */
 
   // Get Table
   const getTable = async (wikiUrl) => {
@@ -68,40 +62,34 @@ const App = () => {
     })
 
     // Get table from response
-    const data = await res.json();
-    const parsedJson = JSON.parse(data);
-    console.log('Parsed Json', parsedJson);
-
-
-    setTableData(parsedJson);
-
-    
+    const resData = await res.json();
+    tableData = JSON.parse(resData);
+    console.log('Parsed Json', tableData);
 
     // Get table headers and assign to axes selector
-
-    // Show axes selection
-    setShowAxesSelector(true);
-
-    const json_getAllKeys = data => (
-      data.reduce((keys, obj) => (
+    /* const json_getAllKeys = resData => (
+      resData.reduce((keys, obj) => (
         keys.concat(Object.keys(obj).filter(key => (
           keys.indexOf(key) === -1))
         )
       ), [])
-    )
+    ); */
+    
+    // Show axes selection
+    setShowAxesSelector(true);
 
-    //setChartData(parsedJson);
-    console.log(json_getAllKeys(tableData));
+    // Ideally updateChartAxes would be triggered by selecting the axes in AxesSelector
+    // but it didnt quite work out that way..
+    updateChartAxes();
   }
 
-  const axesSelected = (selectedAxes) => {
+  // Update chart axes
+  const updateChartAxes = (selectedAxes) => {
     
-    // Get table headers and assign to axes selector
+    console.log('TableData in updateChartAxes',tableData);
 
-    console.log(tableData);
-
-    // Get selected x & y axes
-    //const parsedJson = JSON.parse(tableData);
+    // Take the selectedAxes and then use those to update the chart data
+    // Currently we are just using mark and date from the sample data
     const marks = tableData.RecordProgression.map((item) => item.mark);
     const labels = tableData.RecordProgression.map((item) => item.date);
 
@@ -117,19 +105,34 @@ const App = () => {
     };
 
     setShowChart(true);
+    setShowDetailedInfo(true);
   }
 
+  // This shouold be updated based on click on the appropriate column of the chart
+  const selectedRow = { "mark":"1.46" , "athlete":"Nancy Voorhees" , "date":"20 May 1922", "venue":"Simsbury"};
+
+  // Update current detailed info based on chart click
+    /*  const onClick = (e) => {
+    const activePoints = myChart.getElementsAtEventForMode(e, 'nearest', {
+      intersect: true
+    }, false)
+    const [{
+      index
+    }] = activePoints;
+    console.log(sampleData[[index]);
+  };  */
 
   return (
     <Router>
-      <div className='App'>
+      <div className='.container'>
         <Header title='Wikid Chart' />
         <Routes>
           <Route path='/' exact element={(
             <>
               <PageSelector onGetTable={getTable} />
-              {showAxesSelector && <AxesSelector tableHeaders={['the', 'cat', 'sat', 'on']} onAxesSelected={axesSelected}/>}
+              {showAxesSelector && <AxesSelector tableHeaders={['the', 'cat', 'sat', 'on']} onAxesSelected={updateChartAxes}/>}
               {showChart && <Bar options={options} data={data} /* onClick={onClick} */ />}
+              {showDetailedInfo && <DetailedInfo rowData={selectedRow}/>}
             </>
           )} />
           <Route path='/about' element={About()} />

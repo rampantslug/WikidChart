@@ -1,10 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const routesHandler = require('./routes/handler.js');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use('/', routesHandler);
 
 const wikiParser = require('./wikiParser.js');
 
@@ -57,66 +55,19 @@ app.use(function (req, res, next) {
 app.post('/', function(request, response) {
     console.log('POST /');
 
-    const wikiU = request.body;
-    console.log(wikiU);
+    const wikiUrl = request.body;
+    console.log(wikiUrl);
     // Launch wikiParser on requested URL
-
-    //console.dir(request.body)
-    //response.writeHead(200, {'Content-Type': 'text/html'})
-    //response.end('thanks')
+    // Unfortunately this doesnt work at the moment so we are just returning sampleData
+    //const tableData = wikiParser(wikiUrl);
+    //response.json(tableData);
 
     response.json(sampleData);
     response.end();
   })
 
 
-
 const PORT = 4000; // Backend routing port
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
-
-
-
-
-
-const wikiUrl = 'https://en.wikipedia.org/wiki/Women%27s_high_jump_world_record_progression';
-
-
-// TODO: Respond to fetch message with URL passed in..
-
-// TODO: Send JSON data back to REACT frontend
-
-
-
-
-function main() {
-
-
-    //var data = wikiParser(wikiUrl);
-
-    // data should be JSON to transport back to React
-    //console.log(data);
-
-
-
-
-    /* const result = await request.get(wikiUrl);
-    // Get first table from page
-    const $ = cheerio.load(result);
-    //var $table_obj = $('table')[0];
-
-    console.log($('table > thead > tr > th'));
-
-    $("table > thead > tr").each((index, element) => {
-        console.log('Header: ' + $(element).find("td"));
-      }); */
-
-
-    //console.log($table_obj.html());
-    //let res = processTable($table_obj, ['br']);
-    //console.log('Result as an object:\n', res);
-
-}
-
-//main();

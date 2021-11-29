@@ -1,6 +1,17 @@
+
+Add details of coding exercise to the top of this
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+Notes:
+
+npm install in backend and frontend folders
+
+in backend folder => npm run dev
+
 
 ## Available Scripts
 

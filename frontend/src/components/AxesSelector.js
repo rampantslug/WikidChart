@@ -29,9 +29,9 @@ const AxesSelector = ({tableHeaders, onAxesSelected }) => {
 
 
     return (
-        <div>
-            <h3>Axes selection goes here!</h3>
-            <div>
+        <div className='.form-control'>
+            <h4>Select data to use for X and Y axes.</h4>
+            <div >
                 <DropdownButton id="x-axis-dropdown" title="x - axis" onSelect={(e) => setXaxis(e.target.value)} children={['tableHeaders', 'somebullshit','blah']} />
                 <DropdownButton id="y-axis-dropdown" title="y - axis" onSelect={(e) => setYaxis(e.target.value)} children={tableHeaders} />
             </div>

@@ -4,8 +4,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* background-color: #282c34;
-  color: white; */
 }
 
 body {
@@ -57,30 +55,16 @@ body {
   width: 100%;
 }
 
-.task {
-  background: #f4f4f4;
-  margin: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
 
-.task.reminder {
-  border-left: 5px solid green;
-}
-
-.task h3 {
+.detailed-info {
+  margin: 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.add-form {
-  margin-bottom: 40px;
 }
 
 .form-control {
   align-items: center;
-  display: flex;
+  display: block;
   margin-bottom: 20px;
   border: 0ch;
 }
