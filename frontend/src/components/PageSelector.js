@@ -27,7 +27,7 @@ const PageSelector = ({ onGetTable }) => {
 
     return (
         <div>
-            <div className='form-control'>
+            <div className='.form-control'>
                 <input
                     type='text'
                     placeholder='Wikipedia article URL'

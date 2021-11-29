@@ -1,81 +1,55 @@
 
-Add details of coding exercise to the top of this
+# Coding Exercise for Muso
 
-# Getting Started with Create React App
+The task:  
+•	Write a program to display charts from data found in Wikipedia tables
+•	The program should accept a URL and then display the chart of that data
+•	The front end should be in a browser in React JS
+•	The backend should be in Node JS 
+•	The input is any Wikipedia URL, e.g.,
+•	https://en.wikipedia.org/wiki/Women%27s_high_jump_world_record_progression
+•	The back end should access the page at the URL, 
+•	scan the page for a table with numbers
+•	find one or more numeric columns
+•	return the data back to the front end for display
+•	The front end should turn the data into a chart and show it to the user
+Additional notes:
+•	Keep your solutions simple. No need to spend more than a couple of hours on it
+•	Make any assumptions you feel necessary to deliver value and document them
+•	We are interested in your holistic approach to development, not just the code
+•	Please add one wow feature of your choice to impress your users
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-Notes:
+## Installation and running
+(requires Node to be installed)
 
-npm install in backend and frontend folders
+Within the `fronted` folder:
+### `npm install` 
 
-in backend folder => npm run dev
+Within the `backend` folder:
+### `npm install` 
+
+This will install all required modules.
+
+Then also in the `backend` folder:
+### `npm run dev` 
+
+to launch both frontend and backend in development mode.
 
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Click `Sample table` or enter a Wikipedia URL and click `Get table`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+**Notes about application**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The URL gets sent to the backend but unfortunately it isnt able to correctly parse the retrieved page. Instead it will serve up some sample data to the frontend.
+Ideally the should be unit tests but that is another thing I would have had to learn in this time frame.
+The input URL is only checked to ensure it is text, this would normally have better validation and feedback to the user.
+Once the sample data is returned to the frontend the user then gets to pick which columns to use for the x and y axes of the chart. I had trouble pulling this data out of the table and assigning it to the drop downs.
+The chart would then get displayed, due to the drop downs not working correctly we are just showing the chart and the detailed info at the same time.
+The detailed info would update when the user clicks on a column in the chart to show all the data in that row of the table (all of that data is not visible on the chart).
+Styling could do with some work.
+Additional comments and decisions covered in the code.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

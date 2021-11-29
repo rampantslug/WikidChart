@@ -55,11 +55,11 @@ body {
   width: 100%;
 }
 
-
 .detailed-info {
   margin: 40px;
-  display: flex;
+  display: block;
   align-items: center;
+  text-align: center;
 }
 
 .form-control {
